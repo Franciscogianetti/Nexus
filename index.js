@@ -11,6 +11,11 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from the 'dist' directory
 app.use(express.static(join(__dirname, 'dist')));
 
+// Health check
+app.get('/health', (req, res) => {
+    res.send('Server is up and running. Version: ' + Date.now());
+});
+
 // Fallback to index.html for SPA routing
 app.get('*', (req, res) => {
     res.sendFile(resolve(__dirname, 'dist', 'index.html'));
