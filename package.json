@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && move dist\\vite-template.html dist\\index.html",
     "preview": "vite preview",
     "start": "node index.js"
   },
