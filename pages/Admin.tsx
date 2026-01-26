@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
-import { Category, Product } from '../types';
+import { Category, Product, Gender } from '../types';
 import { PRODUCTS } from '../constants';
 
 const Admin: React.FC = () => {
@@ -62,6 +62,7 @@ const Admin: React.FC = () => {
             price: p.price,
             oldPrice: p.oldPrice,
             category: p.category,
+            gender: p.gender || Gender.MALE,
             image: p.image,
             images: p.images || [p.image],
             stock: p.stock || 10,
@@ -314,6 +315,18 @@ const Admin: React.FC = () => {
                                     />
                                 </div>
                                 <div>
+                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Gênero</label>
+                                    <select
+                                        required
+                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold"
+                                        value={editingProduct?.gender || ''}
+                                        onChange={e => setEditingProduct({ ...editingProduct, gender: e.target.value as Gender })}
+                                    >
+                                        <option value="">Selecione...</option>
+                                        {Object.values(Gender).map(g => <option key={g} value={g}>{g}</option>)}
+                                    </select>
+                                </div>
+                                <div>
                                     <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Quantidade em Estoque</label>
                                     <input
                                         type="number" required min="0"
@@ -449,6 +462,7 @@ const Admin: React.FC = () => {
                                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Preço</th>
                                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Estoque</th>
                                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Status</th>
+                                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Gênero</th>
                                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider text-right">Ações</th>
                             </tr>
                         </thead>
@@ -479,6 +493,9 @@ const Admin: React.FC = () => {
                                     <td className="px-6 py-4">
                                         {p.isNew && <span className="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold rounded uppercase border border-blue-100">Novo</span>}
                                         {p.oldPrice && <span className="ml-2 px-2 py-0.5 bg-red-50 text-red-600 text-[10px] font-bold rounded uppercase border border-red-100">Promo</span>}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <span className="px-2.5 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold rounded uppercase">{p.gender}</span>
                                     </td>
                                     <td className="px-6 py-4 text-right">
                                         <div className="flex justify-end gap-2">

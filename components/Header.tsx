@@ -30,7 +30,11 @@ const Header: React.FC = () => {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-10">
           <Link to="/" className={`text-sm font-medium transition-colors ${isActive('/') ? 'text-brand-gold' : 'text-white hover:text-brand-gold'}`}>Início</Link>
-          <Link to="/catalog" className={`text-sm font-medium transition-colors ${isActive('/catalog') ? 'text-brand-gold' : 'text-white hover:text-brand-gold'}`}>Catálogo</Link>
+          <div className="relative group">
+            <Link to="/catalog" className={`text-sm font-medium transition-colors ${location.pathname === '/catalog' ? 'text-brand-gold' : 'text-white hover:text-brand-gold'}`}>Catálogo</Link>
+          </div>
+          <Link to="/catalog?gender=Masculino" className={`text-sm font-medium transition-colors ${location.search.includes('Masculino') ? 'text-brand-gold' : 'text-white hover:text-brand-gold'}`}>Masculino</Link>
+          <Link to="/catalog?gender=Feminino" className={`text-sm font-medium transition-colors ${location.search.includes('Feminino') ? 'text-brand-gold' : 'text-white hover:text-brand-gold'}`}>Feminino</Link>
           <Link to="/size-guide" className={`text-sm font-medium transition-colors ${isActive('/size-guide') ? 'text-brand-gold' : 'text-white hover:text-brand-gold'}`}>Tabela de Medidas</Link>
           <Link to="/checkout" className={`text-sm font-medium transition-colors ${isActive('/checkout') ? 'text-brand-gold' : 'text-white hover:text-brand-gold'}`}>Como Pedir</Link>
         </nav>
@@ -84,7 +88,9 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-brand-navy border-t border-white/10 px-4 py-6 flex flex-col gap-4">
           <Link to="/" className="text-white font-medium py-2 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Início</Link>
-          <Link to="/catalog" className="text-white font-medium py-2 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Catálogo</Link>
+          <Link to="/catalog" className="text-white font-medium py-2 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Catálogo Total</Link>
+          <Link to="/catalog?gender=Masculino" className="text-white font-medium py-2 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Masculino</Link>
+          <Link to="/catalog?gender=Feminino" className="text-white font-medium py-2 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Feminino</Link>
           <Link to="/size-guide" className="text-white font-medium py-2 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Tabela de Medidas</Link>
           <Link to="/checkout" className="text-white font-medium py-2 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Como Pedir</Link>
           {user?.email === 'casa18038@gmail.com' && (

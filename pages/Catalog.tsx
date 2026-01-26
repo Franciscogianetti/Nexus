@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Category, Product } from '../types';
+import { Category, Product, Gender } from '../types';
 import { supabase } from '../lib/supabase';
 import { WHATSAPP_NUMBER } from '../constants';
 import ProductCard from '../components/ProductCard';
@@ -11,6 +11,7 @@ const Catalog: React.FC = () => {
   const initialSearch = params.get('q') || '';
 
   const [selectedCategory, setSelectedCategory] = useState<Category | 'Todos'>('Todos');
+  const [selectedGender, setSelectedGender] = useState<Gender | 'Todos'>('Todos');
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,9 +34,20 @@ const Catalog: React.FC = () => {
   };
 
   useEffect(() => {
-    const q = new URLSearchParams(location.search).get('q');
+    const params = new URLSearchParams(location.search);
+    const q = params.get('q');
+    const gender = params.get('gender');
+
     if (q !== null) {
       setSearchQuery(q);
+    } else {
+      setSearchQuery('');
+    }
+
+    if (gender !== null) {
+      setSelectedGender(gender as any);
+    } else {
+      setSelectedGender('Todos');
     }
   }, [location.search]);
 
@@ -44,11 +56,12 @@ const Catalog: React.FC = () => {
   const filteredProducts = useMemo(() => {
     return products.filter(p => {
       const matchesCategory = selectedCategory === 'Todos' || p.category === selectedCategory;
+      const matchesGender = selectedGender === 'Todos' || p.gender === selectedGender;
       const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.brand.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
+      return matchesCategory && matchesGender && matchesSearch;
     });
-  }, [selectedCategory, searchQuery, products]);
+  }, [selectedCategory, selectedGender, searchQuery, products]);
 
   return (
     <div className="max-w-[1280px] mx-auto px-4 sm:px-10 py-12 flex flex-col lg:flex-row gap-10">
@@ -70,6 +83,27 @@ const Catalog: React.FC = () => {
                   }`}
               >
                 {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-bold text-brand-navy mb-4 flex items-center gap-2">
+            <span className="material-symbols-outlined">wc</span>
+            Gênero
+          </h3>
+          <div className="flex flex-col gap-2">
+            {['Todos', ...Object.values(Gender)].map(g => (
+              <button
+                key={g}
+                onClick={() => setSelectedGender(g as any)}
+                className={`text-left px-4 py-2 rounded-lg text-sm transition-all ${selectedGender === g
+                  ? 'bg-brand-gold text-brand-navy font-bold shadow-md'
+                  : 'text-gray-500 hover:bg-gray-100'
+                  }`}
+              >
+                {g}
               </button>
             ))}
           </div>
@@ -121,7 +155,7 @@ const Catalog: React.FC = () => {
             <h3 className="text-xl font-bold text-gray-400">Nenhum produto encontrado</h3>
             <p className="text-gray-400">Tente ajustar seus filtros ou busca.</p>
             <button
-              onClick={() => { setSelectedCategory('Todos'); setSearchQuery(''); }}
+              onClick={() => { setSelectedCategory('Todos'); setSelectedGender('Todos'); setSearchQuery(''); }}
               className="mt-6 text-primary font-bold hover:underline"
             >
               Limpar todos os filtros

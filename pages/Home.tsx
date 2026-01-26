@@ -173,17 +173,17 @@ const Home: React.FC = () => {
       {/* Featured Banner Section */}
       <section className="bg-gray-50 py-16 border-y border-gray-100">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="relative h-[450px] rounded-2xl overflow-hidden group shadow-lg">
+          <div className="relative h-[450px] rounded-2xl overflow-hidden group shadow-lg border-2 border-brand-gold">
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-              style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9mZow8h25qP6HBmsjk01E51obKPLjest_6Cxv7GmSZ0bQe9x9xCy6ikKgZfWmHh0sGxwvfePJQ0I7vTpkYX1Uy-qpx73qyVb8ayunFaH4p5GfvxBIzQtzpBMuwgxb9aRx1JyyEp8S6zs398y-BWiMckxvGkyfum5mCoLtawd12ewAJQcPkWKPzRg9xzQ1CnvtA9VYUFi3tFQ-0O7tf-XiFkIfLDsUPlCWyU6jGByaJ28Hg30BZuuNKY36M7788a0KNBhwOmPfuO8")' }}
+              style={{ backgroundImage: 'url("/public/women_fashion_banner.png")' }}
             ></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-              <span className="text-brand-gold text-xs font-bold uppercase tracking-widest mb-2">Oferta Especial</span>
-              <h3 className="text-white text-3xl font-bold mb-2">Kit 3 Polos Premium</h3>
-              <p className="text-gray-200 mb-6 max-w-sm">Leve 3 peças e pague com desconto exclusivo. Mix de cores clássicas.</p>
-              <Link to="/checkout" className="self-start px-8 py-3 bg-white text-brand-navy font-bold rounded-lg hover:bg-brand-gold transition-colors shadow-lg">
-                Garantir Desconto
+              <span className="text-brand-gold text-xs font-bold uppercase tracking-widest mb-2">Coleção 2026</span>
+              <h3 className="text-white text-3xl font-bold mb-2">Linha Feminina</h3>
+              <p className="text-gray-200 mb-6 max-w-sm">Elegância e sofisticação em cada detalhe. Conheça nossa nova coleção exclusiva.</p>
+              <Link to="/catalog?gender=Feminino" className="self-start px-8 py-3 bg-brand-gold text-brand-navy font-black rounded-lg hover:scale-105 transition-all shadow-lg">
+                VER COLEÇÃO FEMININA
               </Link>
             </div>
           </div>
@@ -192,7 +192,7 @@ const Home: React.FC = () => {
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
               <span className="material-symbols-outlined text-brand-gold text-4xl mb-4">straighten</span>
               <h3 className="text-2xl font-bold text-brand-navy mb-3">Guia de Medidas</h3>
-              <p className="text-gray-500 mb-6">Evite trocas. Confira nossa tabela detalhada de dimensões para cada tamanho e encontre o caimento perfeito para você.</p>
+              <p className="text-gray-500 mb-6">Confira nossa tabela detalhada para encontrar o caimento perfeito em todas as nossas linhas.</p>
               <Link to="/size-guide" className="inline-flex items-center text-primary font-bold hover:gap-2 transition-all">
                 Acessar Tabela de Tamanhos <span className="material-symbols-outlined ml-1">arrow_forward</span>
               </Link>
@@ -200,10 +200,30 @@ const Home: React.FC = () => {
 
             <div className="bg-brand-navy p-8 rounded-2xl shadow-sm border border-brand-gold/30 text-white">
               <span className="material-symbols-outlined text-brand-gold text-4xl mb-4">support_agent</span>
-              <h3 className="text-2xl font-bold mb-3">Atendimento Humanizado</h3>
-              <p className="text-gray-300 mb-6">Não sabe qual cor escolher? Nossos consultores estão prontos para te ajudar via WhatsApp.</p>
+              <h3 className="text-2xl font-bold mb-3">Atendimento VIP</h3>
+              <p className="text-gray-300 mb-6">Fale com um de nossos consultores especializados para uma experiência de compra personalizada.</p>
               <a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="inline-flex items-center text-brand-gold font-bold hover:text-white transition-all">
                 Falar com Consultor <span className="material-symbols-outlined ml-1">chat</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Community CTA */}
+      <section className="py-16">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-10">
+          <div className="bg-brand-navy rounded-3xl overflow-hidden relative min-h-[400px] border-b-4 border-brand-gold shadow-2xl">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573167243872-43c6433b9d40?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay opacity-30"></div>
+            <div className="relative h-full flex flex-col items-center justify-center p-10 text-center">
+              <span className="text-brand-gold font-bold tracking-[0.3em] text-xs uppercase mb-4">Comunidade Privada</span>
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tight">FINOTRATO <span className="gold-gradient-text">EXCLUSIVE</span></h2>
+              <p className="text-gray-300 mb-10 max-w-xl text-lg md:text-xl font-light leading-relaxed">
+                Participe do nosso grupo VIP e receba lançamentos antecipados, promoções relâmpago e conteúdo exclusivo de moda.
+              </p>
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="group px-12 py-5 bg-brand-gold text-brand-navy font-black rounded-xl hover:scale-105 transition-all shadow-2xl flex items-center gap-3">
+                <span className="material-symbols-outlined font-bold">group_add</span>
+                ENTRAR NO GRUPO VIP
               </a>
             </div>
           </div>

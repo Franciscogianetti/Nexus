@@ -4,6 +4,16 @@ export enum Category {
   BASIC = 'Básicas & Estampadas',
   PREMIUM = 'Linha Premium',
   KITS = 'Kits Promocionais',
+  VESTIDOS = 'Vestidos & Saias',
+  BLUSAS = 'Blusas & Tops',
+  CALCAS_FEM = 'Calças & Shorts Femininos',
+  ACESSORIOS = 'Acessórios',
+}
+
+export enum Gender {
+  MALE = 'Masculino',
+  FEMALE = 'Feminino',
+  UNISEX = 'Unissex',
 }
 
 export interface Product {
@@ -13,6 +23,7 @@ export interface Product {
   price: number;
   oldPrice?: number;
   category: Category;
+  gender: Gender;
   image: string; // Keep for backward compatibility/main image
   images?: string[]; // Multiple images
   stock?: number;
