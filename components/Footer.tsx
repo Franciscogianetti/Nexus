@@ -30,9 +30,11 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-lg mb-6 text-brand-gold uppercase tracking-wider text-sm">Categorias</h3>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li><Link to="/catalog" className="hover:text-white transition-colors">Lançamentos</Link></li>
-              <li><Link to="/catalog" className="hover:text-white transition-colors">Camisas Polo</Link></li>
-              <li><Link to="/catalog" className="hover:text-white transition-colors">Camisetas Básicas</Link></li>
-              <li><Link to="/catalog" className="hover:text-white transition-colors">Kits Promocionais</Link></li>
+              <li><Link to="/catalog?category=Camisas Polo" className="hover:text-white transition-colors">Camisas Polo</Link></li>
+              <li><Link to="/catalog?category=Básicas & Estampadas" className="hover:text-white transition-colors">Básicas & Estampadas</Link></li>
+              <li><Link to="/catalog?category=Linha Premium" className="hover:text-white transition-colors">Linha Premium</Link></li>
+              <li><Link to="/catalog?category=Blusas & Tops" className="hover:text-white transition-colors">Blusas & Tops</Link></li>
+              <li><Link to="/catalog?category=Kits Promocionais" className="hover:text-white transition-colors">Kits Promocionais</Link></li>
             </ul>
           </div>
 
