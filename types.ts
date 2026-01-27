@@ -4,10 +4,7 @@ export enum Category {
   BASIC = 'Básicas & Estampadas',
   PREMIUM = 'Linha Premium',
   KITS = 'Kits Promocionais',
-  VESTIDOS = 'Vestidos & Saias',
   BLUSAS = 'Blusas & Tops',
-  CALCAS_FEM = 'Calças & Shorts Femininos',
-  ACESSORIOS = 'Acessórios',
 }
 
 export enum Gender {
