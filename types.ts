@@ -5,6 +5,8 @@ export enum Category {
   PREMIUM = 'Linha Premium',
   KITS = 'Kits Promocionais',
   BLUSAS = 'Blusas & Tops',
+  MASCULINO = 'Masculino',
+  FEMININO = 'Feminino',
 }
 
 export enum Gender {
