@@ -52,7 +52,7 @@ const Checkout: React.FC = () => {
           </div>
           <div className="p-8 md:p-12">
             <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 font-mono text-sm text-gray-600 mb-8 select-all cursor-copy">
-              Olá, FinoTrato Menswear!<br /><br />
+              Olá, Urban Tide!<br /><br />
               Gostaria de fazer o seguinte pedido:<br />
               1x Polo Navy Premium - Tamanho G (REF: FT-001)<br />
               1x T-Shirt White Basic - Tamanho M (REF: FT-002)<br /><br />

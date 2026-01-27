@@ -255,7 +255,7 @@ const Home: React.FC = () => {
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573167243872-43c6433b9d40?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay opacity-30"></div>
             <div className="relative h-full flex flex-col items-center justify-center p-10 text-center">
               <span className="text-brand-gold font-bold tracking-[0.3em] text-xs uppercase mb-4">Comunidade Privada</span>
-              <h2 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tight">FINOTRATO <span className="gold-gradient-text">EXCLUSIVE</span></h2>
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tight">URBAN TIDE <span className="gold-gradient-text">EXCLUSIVE</span></h2>
               <p className="text-gray-300 mb-10 max-w-xl text-lg md:text-xl font-light leading-relaxed">
                 Participe do nosso grupo VIP e receba lançamentos antecipados, promoções relâmpago e conteúdo exclusivo de moda.
               </p>

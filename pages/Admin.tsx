@@ -171,7 +171,7 @@ const Admin: React.FC = () => {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
                 <div>
                     <h1 className="text-4xl font-black text-brand-navy">Painel Admin</h1>
-                    <p className="text-gray-500">Gerencie o estoque e preços da FinoTrato Menswear</p>
+                    <p className="text-gray-500">Gerencie o estoque e preços da Urban Tide</p>
                 </div>
                 <div className="flex gap-4">
                     <button
