@@ -13,7 +13,7 @@ app.use(express.static(join(__dirname, 'dist')));
 
 // Health check
 app.get('/health', (req, res) => {
-    res.send('Server is up and running. Version: ' + Date.now());
+    res.send('Server is up and running. Version: DEBUG_VERSION_101');
 });
 
 // Fallback to index.html for SPA routing
