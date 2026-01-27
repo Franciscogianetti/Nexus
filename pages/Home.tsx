@@ -176,7 +176,7 @@ const Home: React.FC = () => {
           <div className="relative h-[450px] rounded-2xl overflow-hidden group shadow-lg border-2 border-brand-gold">
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-              style={{ backgroundImage: 'url("/women_fashion_banner.png")' }}
+              style={{ backgroundImage: 'url("/women_fashion_banner.jpg")' }}
             ></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
               <span className="text-brand-gold text-xs font-bold uppercase tracking-widest mb-2">Coleção 2026</span>
