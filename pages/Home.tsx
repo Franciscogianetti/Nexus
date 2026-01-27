@@ -176,11 +176,11 @@ const Home: React.FC = () => {
           <div className="relative h-[450px] rounded-2xl overflow-hidden group shadow-lg border-2 border-brand-gold">
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-              style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1554568218-0f1715e72254?q=80&w=1887&auto=format&fit=crop")' }}
+              style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1554568218-0f1715e72254?auto=format&fit=crop&q=80&w=1000")' }}
             ></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
               <span className="text-brand-gold text-xs font-bold uppercase tracking-widest mb-2">Coleção 2026</span>
-              <h3 className="text-white text-3xl font-bold mb-2">Linha Feminina</h3>
+              <h3 className="text-white text-3xl font-bold mb-2">Linha Feminina Exclusive</h3>
               <p className="text-gray-200 mb-6 max-w-sm">Elegância e sofisticação em cada detalhe. Conheça nossa nova coleção exclusiva.</p>
               <Link to="/catalog?gender=Feminino" className="self-start px-8 py-3 bg-brand-gold text-brand-navy font-black rounded-lg hover:scale-105 transition-all shadow-lg">
                 VER COLEÇÃO FEMININA
