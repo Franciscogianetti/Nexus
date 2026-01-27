@@ -19,11 +19,12 @@ const Home: React.FC = () => {
       badge: "NOVA COLEÇÃO"
     },
     {
-      image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop",
+      image: "/hero_feminine.jpg",
       title: "ESSENCIAL",
       highlight: "FEMININO CHIC",
       description: "Baby looks exclusivas e peças de grife com o caimento perfeito. Sofisticação urbana em cada fibra.",
-      badge: "LANÇAMENTO"
+      badge: "LANÇAMENTO",
+      position: "center 20%" // Focus on the blouse
     }
   ];
 
@@ -65,7 +66,8 @@ const Home: React.FC = () => {
                 className="w-full h-full bg-cover bg-center transition-transform duration-[10000ms] ease-linear"
                 style={{
                   backgroundImage: `linear-gradient(rgba(13, 19, 27, 0.4) 0%, rgba(13, 19, 27, 0.8) 100%), url("${slide.image}")`,
-                  transform: currentSlide === index ? 'scale(1.05)' : 'scale(1.0)' // Subtle zoom effect
+                  transform: currentSlide === index ? 'scale(1.05)' : 'scale(1.0)', // Subtle zoom effect
+                  backgroundPosition: (slide as any).position || 'center'
                 }}
               ></div>
             </div>
