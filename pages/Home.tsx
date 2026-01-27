@@ -8,6 +8,7 @@ import { WHATSAPP_NUMBER } from '../constants';
 const Home: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [activeLine, setActiveLine] = useState<'feminino' | 'masculino'>('masculino');
 
   const slides = [
     {
@@ -172,39 +173,76 @@ const Home: React.FC = () => {
 
       {/* Featured Banner Section */}
       <section className="bg-gray-50 py-16 border-y border-gray-100">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="relative h-[450px] rounded-2xl overflow-hidden group shadow-lg border-2 border-brand-gold">
-            <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-              style={{ backgroundImage: 'url("/women_fashion_banner.jpg")' }}
-            ></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-              <span className="text-brand-gold text-xs font-bold uppercase tracking-widest mb-2">Coleção 2026</span>
-              <h3 className="text-white text-3xl font-bold mb-2">Linha Feminina Exclusive</h3>
-              <p className="text-gray-200 mb-6 max-w-sm">Elegância e sofisticação em cada detalhe. Conheça nossa nova coleção exclusiva.</p>
-              <Link to="/catalog?gender=Feminino" className="self-start px-8 py-3 bg-brand-gold text-brand-navy font-black rounded-lg hover:scale-105 transition-all shadow-lg">
-                VER COLEÇÃO FEMININA
-              </Link>
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-10">
+          <div className="flex justify-center mb-10">
+            <div className="bg-white p-1 rounded-xl shadow-inner border border-gray-200 flex gap-1">
+              <button
+                onClick={() => setActiveLine('masculino')}
+                className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${activeLine === 'masculino' ? 'bg-brand-navy text-white shadow-lg' : 'text-gray-500 hover:text-brand-navy hover:bg-gray-50'}`}
+              >
+                MASCULINO <span className="text-[10px] ml-1 opacity-60">EXCLUSIVE</span>
+              </button>
+              <button
+                onClick={() => setActiveLine('feminino')}
+                className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${activeLine === 'feminino' ? 'bg-brand-navy text-white shadow-lg' : 'text-gray-500 hover:text-brand-navy hover:bg-gray-50'}`}
+              >
+                FEMININO <span className="text-[10px] ml-1 opacity-60">EXCLUSIVE</span>
+              </button>
             </div>
           </div>
 
-          <div className="flex flex-col justify-center gap-6">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-              <span className="material-symbols-outlined text-brand-gold text-4xl mb-4">straighten</span>
-              <h3 className="text-2xl font-bold text-brand-navy mb-3">Guia de Medidas</h3>
-              <p className="text-gray-500 mb-6">Confira nossa tabela detalhada para encontrar o caimento perfeito em todas as nossas linhas.</p>
-              <Link to="/size-guide" className="inline-flex items-center text-primary font-bold hover:gap-2 transition-all">
-                Acessar Tabela de Tamanhos <span className="material-symbols-outlined ml-1">arrow_forward</span>
-              </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="relative h-[450px] rounded-2xl overflow-hidden group shadow-xl border-2 border-brand-gold bg-brand-navy">
+              {/* Transitioning backgrounds */}
+              <div
+                className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${activeLine === 'masculino' ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+                style={{ backgroundImage: 'url("/men_fashion_banner.jpg")' }}
+              ></div>
+              <div
+                className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${activeLine === 'feminino' ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+                style={{ backgroundImage: 'url("/women_fashion_banner.jpg")' }}
+              ></div>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+                <span className="text-brand-gold text-xs font-bold uppercase tracking-widest mb-2 transition-all duration-500 translate-y-0 opacity-100">
+                  Coleção 2026
+                </span>
+                <h3 className="text-white text-3xl font-bold mb-2 transition-all duration-500">
+                  {activeLine === 'masculino' ? 'Linha Masculina Exclusive' : 'Linha Feminina Exclusive'}
+                </h3>
+                <p className="text-gray-200 mb-6 max-w-sm transition-all duration-500">
+                  {activeLine === 'masculino'
+                    ? 'O ápice da moda masculina. Peças selecionadas com corte impecável e materiais nobres.'
+                    : 'Elegância e sofisticação em cada detalhe. Conheça nossa nova coleção exclusiva.'}
+                </p>
+                <Link
+                  to={activeLine === 'masculino' ? '/catalog?gender=Masculino' : '/catalog?gender=Feminino'}
+                  className="self-start px-8 py-3 bg-brand-gold text-brand-navy font-black rounded-lg hover:scale-105 transition-all shadow-lg uppercase"
+                >
+                  VER COLEÇÃO {activeLine === 'masculino' ? 'MASCULINA' : 'FEMININA'}
+                </Link>
+              </div>
             </div>
 
-            <div className="bg-brand-navy p-8 rounded-2xl shadow-sm border border-brand-gold/30 text-white">
-              <span className="material-symbols-outlined text-brand-gold text-4xl mb-4">support_agent</span>
-              <h3 className="text-2xl font-bold mb-3">Atendimento VIP</h3>
-              <p className="text-gray-300 mb-6">Fale com um de nossos consultores especializados para uma experiência de compra personalizada.</p>
-              <a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="inline-flex items-center text-brand-gold font-bold hover:text-white transition-all">
-                Falar com Consultor <span className="material-symbols-outlined ml-1">chat</span>
-              </a>
+            <div className="flex flex-col justify-center gap-6">
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-gold/30 transition-colors group">
+                <span className="material-symbols-outlined text-brand-gold text-4xl mb-4 group-hover:scale-110 transition-transform block w-fit">straighten</span>
+                <h3 className="text-2xl font-bold text-brand-navy mb-3">Guia de Medidas</h3>
+                <p className="text-gray-500 mb-6 font-light">Confira nossa tabela detalhada para encontrar o caimento perfeito em todas as nossas linhas.</p>
+                <Link to="/size-guide" className="inline-flex items-center text-primary font-bold hover:gap-2 transition-all group-hover:text-blue-700">
+                  Acessar Tabela de Tamanhos <span className="material-symbols-outlined ml-1">arrow_forward</span>
+                </Link>
+              </div>
+
+              <div className="bg-brand-navy p-8 rounded-2xl shadow-sm border border-brand-gold/30 text-white relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150"></div>
+                <span className="material-symbols-outlined text-brand-gold text-4xl mb-4 relative z-10">support_agent</span>
+                <h3 className="text-2xl font-bold mb-3 relative z-10">Atendimento VIP</h3>
+                <p className="text-gray-300 mb-6 font-light relative z-10">Fale com um de nossos consultores especializados para uma experiência de compra personalizada.</p>
+                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="inline-flex items-center text-brand-gold font-bold hover:text-white transition-all relative z-10 group-hover:gap-2">
+                  Falar com Consultor <span className="material-symbols-outlined ml-1">chat</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
