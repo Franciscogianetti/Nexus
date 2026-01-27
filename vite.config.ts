@@ -15,11 +15,6 @@ export default defineConfig(({ mode }) => {
         input: {
           main: path.resolve(__dirname, 'vite-template.html'),
         },
-        output: {
-          entryFileNames: 'assets/index.js',
-          chunkFileNames: 'assets/[name].js',
-          assetFileNames: 'assets/[name].[ext]',
-        },
       },
     },
     define: {
