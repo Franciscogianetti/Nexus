@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build && node -e \"const fs = require('fs'); if (fs.existsSync('dist/vite-template.html')) fs.renameSync('dist/vite-template.html', 'dist/index.html')\"",
     "preview": "vite preview",
-    "start": "node index.js"
+    "start": "npm run build && node index.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.90.0",

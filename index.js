@@ -9,18 +9,28 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Serve static files from the 'dist' directory
-app.use(express.static(join(__dirname, 'dist')));
+const distPath = join(__dirname, 'dist');
+console.log(`Serving static files from: ${distPath}`);
+app.use(express.static(distPath));
 
 // Health check
 app.get('/health', (req, res) => {
-    res.send('Server is up and running. Version: DEBUG_VERSION_101');
+    res.send('Server is up and running. Version: DEBUG_VERSION_102');
 });
 
 // Fallback to index.html for SPA routing
 app.get('*', (req, res) => {
-    res.sendFile(resolve(__dirname, 'dist', 'index.html'));
+    const indexPath = resolve(distPath, 'index.html');
+    console.log(`Routing '*' to: ${indexPath}`);
+    res.sendFile(indexPath, (err) => {
+        if (err) {
+            console.error('Error sending index.html:', err);
+            res.status(404).send('Error: index.html not found. Ensure the project is built correctly.');
+        }
+    });
 });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    console.log(`Environment PORT: ${process.env.PORT}`);
 });
