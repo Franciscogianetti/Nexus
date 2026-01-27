@@ -12,18 +12,18 @@ const Home: React.FC = () => {
 
   const slides = [
     {
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9mZow8h25qP6HBmsjk01E51obKPLjest_6Cxv7GmSZ0bQe9x9xCy6ikKgZfWmHh0sGxwvfePJQ0I7vTpkYX1Uy-qpx73qyVb8ayunFaH4p5GfvxBIzQtzpBMuwgxb9aRx1JyyEp8S6zs398y-BWiMckxvGkyfum5mCoLtawd12ewAJQcPkWKPzRg9xzQ1CnvtA9VYUFi3tFQ-0O7tf-XiFkIfLDsUPlCWyU6jGByaJ28Hg30BZuuNKY36M7788a0KNBhwOmPfuO8",
-      title: "COLEÇÃO | 2026",
-      highlight: "URBAN TIDE PREMIUM",
-      description: "Experimente o máximo conforto e elegância com nossas novas polos de algodão pima peruano.",
-      badge: "LANÇAMENTO"
+      image: "/hero_masculine.png",
+      title: "URBAN TIDE | 2026",
+      highlight: "CONCEITO PREMIUM",
+      description: "Do casual ao surfwear de luxo. Polos de algodão pima e camisas de grife para o homem moderno.",
+      badge: "NOVA COLEÇÃO"
     },
     {
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9mZow8h25qP6HBmsjk01E51obKPLjest_6Cxv7GmSZ0bQe9x9xCy6ikKgZfWmHh0sGxwvfePJQ0I7vTpkYX1Uy-qpx73qyVb8ayunFaH4p5GfvxBIzQtzpBMuwgxb9aRx1JyyEp8S6zs398y-BWiMckxvGkyfum5mCoLtawd12ewAJQcPkWKPzRg9xzQ1CnvtA9VYUFi3tFQ-0O7tf-XiFkIfLDsUPlCWyU6jGByaJ28Hg30BZuuNKY36M7788a0KNBhwOmPfuO8", // Placeholder, ideally specific images per slide
-      title: "CLÁSSICOS",
-      highlight: "ATEMPORAIS",
-      description: "Peças essenciais que nunca saem de moda. Qualidade e durabilidade para o seu dia a dia.",
-      badge: "BEST SELLERS"
+      image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop",
+      title: "ESSENCIAL",
+      highlight: "FEMININO CHIC",
+      description: "Baby looks exclusivas e peças de grife com o caimento perfeito. Sofisticação urbana em cada fibra.",
+      badge: "LANÇAMENTO"
     }
   ];
 
