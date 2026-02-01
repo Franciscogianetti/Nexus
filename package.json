@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npx cpy-cli dist/index.html . --rename=index.html",
     "preview": "vite preview",
     "start": "node server.js"
   },
