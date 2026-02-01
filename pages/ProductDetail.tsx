@@ -15,6 +15,11 @@ const ProductDetail: React.FC = () => {
     const [mainImage, setMainImage] = useState('');
     const [zoomPos, setZoomPos] = useState({ x: 0, y: 0, show: false });
 
+    // Hooks moved here to avoid "Minified React error #310"
+    const [coupon, setCoupon] = useState('');
+    const [isApplied, setIsApplied] = useState(false);
+    const [couponError, setCouponError] = useState('');
+
     useEffect(() => {
         if (id) fetchProduct();
     }, [id]);
@@ -69,10 +74,6 @@ const ProductDetail: React.FC = () => {
         </div>
     );
 
-
-    const [coupon, setCoupon] = useState('');
-    const [isApplied, setIsApplied] = useState(false);
-    const [couponError, setCouponError] = useState('');
 
     const handleApplyCoupon = () => {
         if (coupon.toUpperCase() === 'URBAN20') {
