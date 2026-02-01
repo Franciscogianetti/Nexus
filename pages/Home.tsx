@@ -132,7 +132,7 @@ const Home: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase mb-4 leading-none">
                 TODO O SITE COM <span className="gold-gradient-text">20% OFF</span>
               </h2>
-              <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px] md:text-sm">Aproveite nossa curadoria premium em algodão pima e cortes italianos.</p>
+              <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px] md:text-sm">Roupas premium de fio 30.1/40.1 de extrema qualidade</p>
             </div>
 
             <div className="flex flex-col sm:flex-row lg:flex-col items-center gap-6 shrink-0">
