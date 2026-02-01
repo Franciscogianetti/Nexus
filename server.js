@@ -15,7 +15,7 @@ app.use(express.static(distPath));
 
 // Health check
 app.get('/health', (req, res) => {
-    res.send('Server is up and running. Version: COUPON_SYSTEM_V2');
+    res.send('Server is up and running. Version: COUPON_SYSTEM_V3');
 });
 
 // Fallback to index.html for SPA routing
