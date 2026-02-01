@@ -69,7 +69,26 @@ const ProductDetail: React.FC = () => {
         </div>
     );
 
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Olá! Tenho interesse no produto: ${product.name} (REF: ${product.ref})`)}`;
+
+    const [coupon, setCoupon] = useState('');
+    const [isApplied, setIsApplied] = useState(false);
+    const [couponError, setCouponError] = useState('');
+
+    const handleApplyCoupon = () => {
+        if (coupon.toUpperCase() === 'URBAN20') {
+            setIsApplied(true);
+            setCouponError('');
+        } else {
+            setIsApplied(false);
+            setCouponError('Cupom inválido. Tente "URBAN20".');
+        }
+    };
+
+    const discountedPrice = isApplied ? product.price * 0.8 : product.price;
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+        `Olá! Tenho interesse no produto: ${product.name} (REF: ${product.ref})${isApplied ? `\n\n🎟️ CUPOM APLICADO: URBAN20 (20% OFF)\n🔐 Protocolo de Segurança: UT-2026-VERIFIED` : ''}`
+    )}`;
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-8 md:py-16">
@@ -151,12 +170,21 @@ const ProductDetail: React.FC = () => {
                             <span className="material-symbols-outlined text-8xl">payments</span>
                         </div>
 
-                        {product.oldPrice && (
-                            <span className="text-xl text-gray-400 line-through block mb-2 font-medium opacity-50">R$ {product.oldPrice.toFixed(2).replace('.', ',')}</span>
-                        )}
+                        {product.oldPrice || isApplied ? (
+                            <span className="text-xl text-gray-400 line-through block mb-2 font-medium opacity-50">
+                                R$ {(product.oldPrice || product.price).toFixed(2).replace('.', ',')}
+                            </span>
+                        ) : null}
+
                         <div className="flex items-baseline gap-2">
-                            <span className="text-6xl md:text-7xl font-black text-brand-navy italic tracking-tighter">R$ {product.price.toFixed(2).split('.')[0]}</span>
-                            <span className="text-3xl font-black text-brand-navy italic tracking-tighter">,{product.price.toFixed(2).split('.')[1]}</span>
+                            <span className="text-6xl md:text-7xl font-black text-brand-navy italic tracking-tighter">R$ {discountedPrice.toFixed(2).split('.')[0]}</span>
+                            <span className="text-3xl font-black text-brand-navy italic tracking-tighter">,{discountedPrice.toFixed(2).split('.')[1]}</span>
+
+                            {isApplied && (
+                                <span className="ml-4 bg-brand-gold text-brand-navy text-xs font-black px-3 py-1 rounded-full uppercase tracking-tighter animate-bounce">
+                                    -20% OFF
+                                </span>
+                            )}
                         </div>
                         <p className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-widest">Ou em até 3x sem juros no cartão</p>
                     </div>
@@ -173,6 +201,38 @@ const ProductDetail: React.FC = () => {
                             </span>
                             {product.stock && product.stock > 0 ? `${product.stock} peças disponíveis` : 'Produto Indisponível'}
                         </div>
+                    </div>
+
+                    {/* Coupon Section */}
+                    <div className="mb-12 bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                        <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Cupom de Desconto</h3>
+                        <div className="flex gap-2">
+                            <input
+                                type="text"
+                                placeholder="CUPOM"
+                                value={coupon}
+                                onChange={(e) => setCoupon(e.target.value)}
+                                className="flex-grow px-4 py-2 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-brand-gold font-bold uppercase"
+                            />
+                            <button
+                                onClick={handleApplyCoupon}
+                                className="px-6 py-2 bg-brand-navy text-white font-bold rounded-xl hover:bg-opacity-90 transition-all"
+                            >
+                                APLICAR
+                            </button>
+                        </div>
+                        {isApplied && (
+                            <p className="text-[10px] font-black text-green-600 mt-2 uppercase tracking-widest flex items-center gap-1">
+                                <span className="material-symbols-outlined text-sm">check_circle</span>
+                                Cupom aplicado com sucesso!
+                            </p>
+                        )}
+                        {couponError && (
+                            <p className="text-[10px] font-black text-red-600 mt-2 uppercase tracking-widest flex items-center gap-1">
+                                <span className="material-symbols-outlined text-sm">error</span>
+                                {couponError}
+                            </p>
+                        )}
                     </div>
 
                     {/* Sizes Section */}
