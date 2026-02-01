@@ -1,12 +1,12 @@
 {
   "name": "urban-tide-fashion",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "main": "server.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node -e \"const fs = require('fs'); if (fs.existsSync('dist/vite-template.html')) fs.renameSync('dist/vite-template.html', 'dist/index.html')\"",
+    "build": "vite build",
     "preview": "vite preview",
     "start": "node server.js"
   },
