@@ -20,19 +20,38 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check active sessions and sets the user
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setUser(session?.user ?? null);
-            setLoading(false);
-        });
+        console.log("AuthContext: Initializing session check...");
 
-        // Listen for changes on auth state (logged in, signed out, etc.)
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-            setUser(session?.user ?? null);
-            setLoading(false);
-        });
+        try {
+            // Check active sessions and sets the user
+            supabase.auth.getSession()
+                .then(({ data: { session }, error }) => {
+                    if (error) {
+                        console.error("AuthContext: Get session error:", error);
+                    }
+                    console.log("AuthContext: Session retrieved:", session?.user?.email || "No session");
+                    setUser(session?.user ?? null);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.error("AuthContext: Promise rejected in getSession:", err);
+                    setLoading(false);
+                });
 
-        return () => subscription.unsubscribe();
+            // Listen for changes on auth state (logged in, signed out, etc.)
+            const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+                console.log("AuthContext: Auth state changed:", _event, session?.user?.email || "No session");
+                setUser(session?.user ?? null);
+                setLoading(false);
+            });
+
+            return () => {
+                if (subscription) subscription.unsubscribe();
+            };
+        } catch (err) {
+            console.error("AuthContext: Fatal error in useEffect:", err);
+            setLoading(false);
+        }
     }, []);
 
     const signOut = async () => {
