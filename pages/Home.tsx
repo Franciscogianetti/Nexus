@@ -122,6 +122,32 @@ const Home: React.FC = () => {
         </button>
       </section>
 
+      {/* Promo Banner Section */}
+      <section className="bg-gradient-to-r from-brand-navy to-slate-900 overflow-hidden relative group py-10 md:py-16">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-10 relative z-10">
+          <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-10">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1">
+              <span className="bg-brand-gold text-brand-navy text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter mb-6 animate-pulse shadow-lg shadow-brand-gold/20">Oferta Limitada</span>
+              <h2 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase mb-4 leading-none">
+                TODO O SITE COM <span className="gold-gradient-text">20% OFF</span>
+              </h2>
+              <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px] md:text-sm">Aproveite nossa curadoria premium em algodão pima e cortes italianos.</p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row lg:flex-col items-center gap-6 shrink-0">
+              <div className="bg-black/40 border-2 border-dashed border-brand-gold/50 px-10 py-6 rounded-2xl flex flex-col items-center group-hover:border-brand-gold transition-colors shadow-2xl">
+                <span className="text-[10px] text-gray-500 font-black uppercase mb-2 tracking-widest">RESGATE O CUPOM:</span>
+                <span className="text-3xl md:text-4xl font-black text-brand-gold tracking-[0.3em] drop-shadow-lg scale-110">URBAN20</span>
+              </div>
+              <Link to="/catalog" className="w-full sm:w-auto px-12 py-4 bg-brand-gold text-brand-navy font-black rounded-xl hover:scale-105 hover:bg-white transition-all shadow-2xl shadow-brand-gold/20 uppercase text-sm tracking-widest">
+                GARANTIR DESCONTO
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Trust Indicators */}
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-10 py-10">
