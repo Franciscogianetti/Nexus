@@ -19,6 +19,7 @@ const ProductDetail: React.FC = () => {
     const [coupon, setCoupon] = useState('');
     const [isApplied, setIsApplied] = useState(false);
     const [couponError, setCouponError] = useState('');
+    const [selectedSize, setSelectedSize] = useState<string>('');
 
     useEffect(() => {
         if (id) fetchProduct();
@@ -87,9 +88,15 @@ const ProductDetail: React.FC = () => {
 
     const discountedPrice = isApplied ? product.price * 0.8 : product.price;
 
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-        `Olá! Tenho interesse no produto: ${product.name} (REF: ${product.ref})${isApplied ? `\n\n🎟️ CUPOM APLICADO: URBAN20 (20% OFF)\n🔐 Protocolo de Segurança: UT-2026-VERIFIED` : ''}`
-    )}`;
+    const messageTemplate = `Olá, Urban Tide!
+Tenho interesse no seguinte item:
+🛒 *${product.name}*
+🔢 REF: ${product.ref}
+📏 TAMANHO: ${selectedSize || '(Não selecionado)'}
+
+${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Segurança: UT-2026-VERIFIED` : 'Gostaria de saber mais sobre este modelo.'}`;
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(messageTemplate)}`;
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-8 md:py-16">
@@ -245,15 +252,20 @@ const ProductDetail: React.FC = () => {
                         <div className="flex flex-wrap gap-4">
                             {SIZES.map(s => {
                                 const isAvailable = (product.sizes || []).includes(s.size) || (!product.sizes || product.sizes.length === 0);
+                                const isSelected = selectedSize === s.size;
                                 return (
-                                    <div key={s.size} className={`group relative ${!isAvailable ? 'opacity-30 pointer-events-none grayscale' : ''}`}>
-                                        <div className="size-14 md:size-16 rounded-2xl border-2 border-gray-100 font-black text-brand-navy flex items-center justify-center hover:border-brand-gold hover:bg-brand-gold/5 transition-all cursor-default text-lg italic">
+                                    <button
+                                        key={s.size}
+                                        onClick={() => isAvailable && setSelectedSize(s.size)}
+                                        className={`group relative ${!isAvailable ? 'opacity-30 pointer-events-none grayscale' : 'cursor-pointer'}`}
+                                    >
+                                        <div className={`size-14 md:size-16 rounded-2xl border-2 font-black flex items-center justify-center transition-all text-lg italic ${isSelected ? 'border-brand-gold bg-brand-gold/10 text-brand-gold shadow-lg scale-110' : 'border-gray-100 text-brand-navy hover:border-brand-gold/50'}`}>
                                             {s.size}
                                         </div>
                                         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-brand-navy text-white text-[8px] rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-30 font-bold uppercase tracking-widest shadow-xl">
                                             {isAvailable ? `${s.width} x ${s.height}` : 'Indisponível'}
                                         </div>
-                                    </div>
+                                    </button>
                                 );
                             })}
                         </div>
