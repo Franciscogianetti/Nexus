@@ -128,7 +128,7 @@ const Home: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10000ms] group-hover:scale-110"
           style={{
-            backgroundImage: `linear-gradient(to right, rgba(13, 19, 27, 0.95) 30%, rgba(13, 19, 27, 0.4) 100%), url("/coupon_promo.jpg")`,
+            backgroundImage: `linear-gradient(to right, rgba(13, 19, 27, 0.8) 0%, rgba(13, 19, 27, 0.2) 100%), url("/coupon_promo.jpg")`,
             backgroundPosition: 'center 30%'
           }}
         ></div>
