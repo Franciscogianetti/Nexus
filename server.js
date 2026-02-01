@@ -20,12 +20,12 @@ app.get('/health', (req, res) => {
 
 // Fallback to index.html for SPA routing
 app.get('*', (req, res) => {
-    const indexPath = resolve(distPath, 'index.html');
+    const indexPath = join(distPath, 'index.html');
     console.log(`Routing '*' to: ${indexPath}`);
     res.sendFile(indexPath, (err) => {
         if (err) {
             console.error('Error sending index.html:', err);
-            res.status(404).send('Error: index.html not found. Ensure the project is built correctly.');
+            res.status(404).send('Error: Built index.html not found in dist/. Please ensure the build process completed.');
         }
     });
 });

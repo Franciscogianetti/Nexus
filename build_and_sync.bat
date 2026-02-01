@@ -15,4 +15,8 @@ if %ERRORLEVEL% NEQ 0 (
 echo Syncing dist/index.html to root for static hosting...
 copy /Y dist\index.html index.html
 
+echo Syncing dist/assets contents to root assets folder...
+if not exist assets mkdir assets
+xcopy /E /Y /I dist\assets assets
+
 echo Build and sync complete.
