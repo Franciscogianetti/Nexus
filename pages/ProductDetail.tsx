@@ -82,7 +82,7 @@ const ProductDetail: React.FC = () => {
             setCouponError('');
         } else {
             setIsApplied(false);
-            setCouponError('Cupom inválido. Tente "URBAN20".');
+            setCouponError('Cupom inválido.');
         }
     };
 

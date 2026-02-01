@@ -14,7 +14,7 @@ const Checkout: React.FC = () => {
       setError('');
     } else {
       setIsApplied(false);
-      setError('Cupom inválido. Tente "URBAN20".');
+      setError('Cupom inválido.');
     }
   };
 
