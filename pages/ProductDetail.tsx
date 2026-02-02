@@ -217,7 +217,7 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                         <div className="flex gap-2">
                             <input
                                 type="text"
-                                placeholder="DIGITE O CUPOM"
+                                placeholder="CUPOM"
                                 value={coupon}
                                 onChange={(e) => setCoupon(e.target.value)}
                                 className="flex-grow px-4 py-2 rounded-xl border border-white/10 bg-black/40 text-white outline-none focus:ring-2 focus:ring-brand-gold font-bold uppercase placeholder:text-gray-600"
@@ -227,7 +227,7 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                                 className="btn-aplicar px-6 py-2 rounded-xl font-black hover:bg-white hover:scale-105 transition-all shadow-lg"
                                 style={{ backgroundColor: '#c5a059 !important', color: '#0d131b !important' }}
                             >
-                                APLICAR AGORA
+                                APLICAR
                             </button>
                         </div>
                         {isApplied && (
