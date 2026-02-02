@@ -22,14 +22,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-      <Link to={`/product/${product.id}`} className="block relative aspect-[3/4] overflow-hidden bg-gray-100">
+    <div className="group bg-brand-navy/40 backdrop-blur-sm rounded-xl shadow-2xl border border-white/5 overflow-hidden hover:border-brand-gold/50 hover:-translate-y-1 transition-all duration-300">
+      <Link to={`/product/${product.id}`} className="block relative aspect-[3/4] overflow-hidden bg-brand-navy">
         <div
           className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
           style={{ backgroundImage: `url("${product.image}")` }}
         ></div>
         {product.isNew && (
-          <div className="absolute top-3 left-3 bg-brand-navy text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-lg">Novo</div>
+          <div className="absolute top-3 left-3 bg-brand-gold text-brand-navy text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-lg">Novo</div>
         )}
         {product.oldPrice && (
           <div className="absolute top-3 right-3 bg-red-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-lg">
@@ -39,11 +39,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </Link>
       <div className="p-5">
         <div className="flex justify-between items-start mb-1">
-          <span className="text-[10px] uppercase text-gray-400 font-bold tracking-widest">{product.brand}</span>
-          <span className="text-[10px] text-gray-300">REF: {product.ref}</span>
+          <span className="text-[10px] uppercase text-gray-500 font-bold tracking-widest">{product.brand}</span>
+          <span className="text-[10px] text-gray-600">REF: {product.ref}</span>
         </div>
         <Link to={`/product/${product.id}`} className="block group/title">
-          <h3 className="text-brand-navy font-bold text-lg mb-1 truncate group-hover/title:text-brand-gold transition-colors">{product.name}</h3>
+          <h3 className="text-white font-bold text-lg mb-1 truncate group-hover/title:text-brand-gold transition-colors">{product.name}</h3>
         </Link>
 
         {product.colors && (
@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <span className="text-brand-gold font-bold text-xl">R$ {product.price.toFixed(2).replace('.', ',')}</span>
           </div>
           <div className="text-right">
-            <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${product.stock && product.stock > 0 ? 'bg-gray-100 text-gray-600' : 'bg-red-50 text-red-600'}`}>
+            <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${product.stock && product.stock > 0 ? 'bg-white/5 text-gray-400' : 'bg-red-900/20 text-red-500'}`}>
               {product.stock && product.stock > 0 ? `${product.stock} em estoque` : 'Esgotado'}
             </span>
           </div>

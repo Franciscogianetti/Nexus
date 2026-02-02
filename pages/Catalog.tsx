@@ -68,8 +68,8 @@ const Catalog: React.FC = () => {
       {/* Sidebar Filters */}
       <aside className="lg:w-64 shrink-0 flex flex-col gap-8">
         <div>
-          <h3 className="text-lg font-bold text-brand-navy mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined">filter_list</span>
+          <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <span className="material-symbols-outlined text-brand-gold">filter_list</span>
             Filtrar por
           </h3>
           <div className="flex flex-col gap-2">
@@ -78,8 +78,8 @@ const Catalog: React.FC = () => {
                 key={cat}
                 onClick={() => setSelectedCategory(cat as any)}
                 className={`text-left px-4 py-2 rounded-lg text-sm transition-all ${selectedCategory === cat
-                  ? 'bg-brand-gold text-brand-navy font-bold shadow-md'
-                  : 'text-gray-500 hover:bg-gray-100'
+                  ? 'bg-brand-gold text-brand-navy font-bold shadow-md shadow-brand-gold/20'
+                  : 'text-gray-400 hover:bg-white/5 hover:text-white'
                   }`}
               >
                 {cat}
@@ -89,8 +89,8 @@ const Catalog: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="text-lg font-bold text-brand-navy mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined">wc</span>
+          <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <span className="material-symbols-outlined text-brand-gold">wc</span>
             Gênero
           </h3>
           <div className="flex flex-col gap-2">
@@ -99,8 +99,8 @@ const Catalog: React.FC = () => {
                 key={g}
                 onClick={() => setSelectedGender(g as any)}
                 className={`text-left px-4 py-2 rounded-lg text-sm transition-all ${selectedGender === g
-                  ? 'bg-brand-gold text-brand-navy font-bold shadow-md'
-                  : 'text-gray-500 hover:bg-gray-100'
+                  ? 'bg-brand-gold text-brand-navy font-bold shadow-md shadow-brand-gold/20'
+                  : 'text-gray-400 hover:bg-white/5 hover:text-white'
                   }`}
               >
                 {g}
@@ -109,14 +109,14 @@ const Catalog: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
-          <h4 className="font-bold text-brand-navy mb-2">Suporte Direto</h4>
-          <p className="text-xs text-gray-400 mb-4">Dúvidas sobre o produto or estoque? Fale conosco.</p>
+        <div className="bg-brand-navy/30 p-6 rounded-xl border border-white/5 backdrop-blur-sm">
+          <h4 className="font-bold text-white mb-2">Suporte Direto</h4>
+          <p className="text-xs text-gray-500 mb-4">Dúvidas sobre o produto or estoque? Fale conosco.</p>
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full py-2 bg-brand-navy text-white text-xs font-bold rounded-lg flex items-center justify-center gap-2"
+            className="w-full py-2 bg-brand-navy border border-white/10 text-white text-xs font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-brand-gold hover:text-brand-navy transition-colors"
           >
             <span className="material-symbols-outlined text-sm">chat</span> WhatsApp
           </a>
@@ -127,8 +127,8 @@ const Catalog: React.FC = () => {
       <div className="flex-1">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-black text-brand-navy tracking-tight">{selectedCategory}</h1>
-            <p className="text-sm text-gray-400">Exibindo {filteredProducts.length} produtos encontrados</p>
+            <h1 className="text-3xl font-black text-white tracking-tight">{selectedCategory}</h1>
+            <p className="text-sm text-gray-500">Exibindo {filteredProducts.length} produtos encontrados</p>
           </div>
 
           <div className="relative w-full sm:w-64">
@@ -138,7 +138,7 @@ const Catalog: React.FC = () => {
               placeholder="Buscar no catálogo..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-gray-50 border-gray-200 rounded-lg text-sm focus:ring-brand-gold focus:border-brand-gold"
+              className="w-full pl-10 pr-4 py-2 bg-brand-navy/30 border-white/10 rounded-lg text-sm text-white focus:ring-brand-gold focus:border-brand-gold placeholder:text-gray-600"
             />
           </div>
         </div>
@@ -150,10 +150,10 @@ const Catalog: React.FC = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
-            <span className="material-symbols-outlined text-5xl text-gray-300 mb-4">search_off</span>
-            <h3 className="text-xl font-bold text-gray-400">Nenhum produto encontrado</h3>
-            <p className="text-gray-400">Tente ajustar seus filtros ou busca.</p>
+          <div className="text-center py-20 bg-brand-navy/20 rounded-2xl border-2 border-dashed border-white/5">
+            <span className="material-symbols-outlined text-5xl text-gray-700 mb-4">search_off</span>
+            <h3 className="text-xl font-bold text-gray-500">Nenhum produto encontrado</h3>
+            <p className="text-gray-600">Tente ajustar seus filtros ou busca.</p>
             <button
               onClick={() => { setSelectedCategory('Todos'); setSelectedGender('Todos'); setSearchQuery(''); }}
               className="mt-6 text-primary font-bold hover:underline"

@@ -170,8 +170,8 @@ const Admin: React.FC = () => {
         <div className="max-w-6xl mx-auto px-4 py-12">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
                 <div>
-                    <h1 className="text-4xl font-black text-brand-navy">Painel Admin</h1>
-                    <p className="text-gray-500">Gerencie o estoque e preços da Urban Tide</p>
+                    <h1 className="text-4xl font-black text-white uppercase italic tracking-tighter">Painel Admin</h1>
+                    <p className="text-gray-500 text-sm">Gerencie o estoque e preços da Urban Tide</p>
                 </div>
                 <div className="flex gap-4">
                     <button
@@ -199,14 +199,14 @@ const Admin: React.FC = () => {
                     <button
                         onClick={handleSync}
                         disabled={syncing}
-                        className="px-6 py-2 border-2 border-brand-navy text-brand-navy font-bold rounded-lg hover:bg-gray-50 transition-all flex items-center gap-2"
+                        className="px-6 py-2 border-2 border-brand-navy bg-brand-navy text-white font-bold rounded-lg hover:bg-white/5 transition-all flex items-center gap-2"
                     >
                         <span className="material-symbols-outlined">sync</span>
                         {syncing ? 'Sincronizando...' : 'Sincronizar Código'}
                     </button>
                     <button
                         onClick={() => { setEditingProduct({}); setShowForm(true); }}
-                        className="px-6 py-2 bg-brand-navy text-white font-bold rounded-lg hover:bg-opacity-90 transition-all flex items-center gap-2"
+                        className="px-6 py-2 bg-brand-gold text-brand-navy font-bold rounded-lg hover:bg-opacity-90 transition-all flex items-center gap-2 shadow-lg shadow-brand-gold/10"
                     >
                         <span className="material-symbols-outlined">add</span>
                         Novo Produto
@@ -240,7 +240,7 @@ const Admin: React.FC = () => {
             </div>
 
             {msg && (
-                <div className={`mb-8 p-4 rounded-lg text-sm font-medium flex justify-between items-center ${msg.type === 'error' ? 'bg-red-50 text-red-600 border border-red-100' : 'bg-green-50 text-green-600 border border-green-100'
+                <div className={`mb-8 p-4 rounded-lg text-sm font-medium flex justify-between items-center ${msg.type === 'error' ? 'bg-red-900/20 text-red-500 border border-red-500/20' : 'bg-green-900/20 text-green-500 border border-green-500/20'
                     }`}>
                     {msg.text}
                     <button onClick={() => setMsg(null)} className="material-symbols-outlined text-sm">close</button>
@@ -248,89 +248,89 @@ const Admin: React.FC = () => {
             )}
 
             {showForm && (
-                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                    <div className="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
-                        <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-brand-navy text-white">
-                            <h2 className="text-xl font-bold">{editingProduct?.id ? 'Editar Produto' : 'Novo Produto'}</h2>
-                            <button onClick={() => setShowForm(false)} className="material-symbols-outlined">close</button>
+                <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+                    <div className="bg-brand-navy w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col border border-white/10">
+                        <div className="p-6 border-b border-white/5 flex justify-between items-center bg-black/40 text-white">
+                            <h2 className="text-xl font-bold uppercase italic tracking-widest">{editingProduct?.id ? 'Editar Produto' : 'Novo Produto'}</h2>
+                            <button onClick={() => setShowForm(false)} className="material-symbols-outlined hover:text-brand-gold transition-colors">close</button>
                         </div>
                         <form onSubmit={handleSaveProduct} className="p-6 overflow-y-auto space-y-4">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Nome</label>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1 tracking-widest">Nome</label>
                                     <input
                                         type="text" required
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold"
+                                        className="w-full px-4 py-2 bg-black/20 border border-white/10 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold text-white"
                                         value={editingProduct?.name || ''}
                                         onChange={e => setEditingProduct({ ...editingProduct, name: e.target.value })}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Referência (REF)</label>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1 tracking-widest">Referência (REF)</label>
                                     <input
                                         type="text" required
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold"
+                                        className="w-full px-4 py-2 bg-black/20 border border-white/10 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold text-white"
                                         value={editingProduct?.ref || ''}
                                         onChange={e => setEditingProduct({ ...editingProduct, ref: e.target.value })}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Preço Atual</label>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1 tracking-widest">Preço Atual</label>
                                     <input
                                         type="number" step="0.01" required
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold"
+                                        className="w-full px-4 py-2 bg-black/20 border border-white/10 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold text-white"
                                         value={editingProduct?.price || ''}
                                         onChange={e => setEditingProduct({ ...editingProduct, price: parseFloat(e.target.value) })}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Preço Antigo (Promoção)</label>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1 tracking-widest">Preço Antigo (Promoção)</label>
                                     <input
                                         type="number" step="0.01"
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold"
+                                        className="w-full px-4 py-2 bg-black/20 border border-white/10 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold text-white"
                                         value={editingProduct?.oldPrice || ''}
                                         onChange={e => setEditingProduct({ ...editingProduct, oldPrice: e.target.value ? parseFloat(e.target.value) : undefined })}
                                         placeholder="Opcional"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Categoria</label>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1 tracking-widest">Categoria</label>
                                     <select
                                         required
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold"
+                                        className="w-full px-4 py-2 bg-black/20 border border-white/10 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold text-white"
                                         value={editingProduct?.category || ''}
                                         onChange={e => setEditingProduct({ ...editingProduct, category: e.target.value as Category })}
                                     >
-                                        <option value="">Selecione...</option>
-                                        {Object.values(Category).map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                                        <option value="" className="bg-brand-navy">Selecione...</option>
+                                        {Object.values(Category).map(cat => <option key={cat} value={cat} className="bg-brand-navy">{cat}</option>)}
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Marca</label>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1 tracking-widest">Marca</label>
                                     <input
                                         type="text" required
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold"
+                                        className="w-full px-4 py-2 bg-black/20 border border-white/10 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold text-white"
                                         value={editingProduct?.brand || ''}
                                         onChange={e => setEditingProduct({ ...editingProduct, brand: e.target.value })}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Gênero</label>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1 tracking-widest">Gênero</label>
                                     <select
                                         required
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold"
+                                        className="w-full px-4 py-2 bg-black/20 border border-white/10 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold text-white"
                                         value={editingProduct?.gender || ''}
                                         onChange={e => setEditingProduct({ ...editingProduct, gender: e.target.value as Gender })}
                                     >
-                                        <option value="">Selecione...</option>
-                                        {Object.values(Gender).map(g => <option key={g} value={g}>{g}</option>)}
+                                        <option value="" className="bg-brand-navy">Selecione...</option>
+                                        {Object.values(Gender).map(g => <option key={g} value={g} className="bg-brand-navy">{g}</option>)}
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Quantidade em Estoque</label>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1 tracking-widest">Quantidade em Estoque</label>
                                     <input
                                         type="number" required min="0"
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold"
+                                        className="w-full px-4 py-2 bg-black/20 border border-white/10 rounded-lg outline-none focus:ring-2 focus:ring-brand-gold text-white"
                                         value={editingProduct?.stock || 0}
                                         onChange={e => setEditingProduct({ ...editingProduct, stock: parseInt(e.target.value) })}
                                     />
@@ -340,7 +340,7 @@ const Admin: React.FC = () => {
                                 <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Tamanhos Disponíveis</label>
                                 <div className="flex gap-4">
                                     {['P', 'M', 'G', 'GG'].map(size => (
-                                        <label key={size} className="flex items-center gap-2 cursor-pointer">
+                                        <label key={size} className="flex items-center gap-2 cursor-pointer group">
                                             <input
                                                 type="checkbox"
                                                 className="accent-brand-gold size-4"
@@ -353,7 +353,7 @@ const Admin: React.FC = () => {
                                                     setEditingProduct({ ...editingProduct, sizes: newSizes });
                                                 }}
                                             />
-                                            <span className="text-sm font-bold text-gray-600">{size}</span>
+                                            <span className="text-sm font-bold text-gray-400 group-hover:text-white transition-colors">{size}</span>
                                         </label>
                                     ))}
                                 </div>
@@ -411,7 +411,7 @@ const Admin: React.FC = () => {
                                         />
                                         <label
                                             htmlFor="image-upload"
-                                            className={`flex items-center justify-center gap-2 px-6 py-4 border-2 border-dashed border-gray-200 rounded-xl cursor-pointer hover:border-brand-gold hover:bg-gray-50 transition-all ${uploading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                            className={`flex items-center justify-center gap-2 px-6 py-4 border-2 border-dashed border-white/10 rounded-xl cursor-pointer hover:border-brand-gold hover:bg-white/5 transition-all ${uploading ? 'opacity-50 cursor-not-allowed' : ''}`}
                                         >
                                             {uploading ? (
                                                 <>
@@ -420,7 +420,7 @@ const Admin: React.FC = () => {
                                                 </>
                                             ) : (
                                                 <>
-                                                    <span className="material-symbols-outlined text-gray-400">cloud_upload</span>
+                                                    <span className="material-symbols-outlined text-gray-600">cloud_upload</span>
                                                     <span className="text-sm font-bold text-gray-500">
                                                         Adicionar Fotos do Computador
                                                     </span>
@@ -437,13 +437,13 @@ const Admin: React.FC = () => {
                                     onChange={e => setEditingProduct({ ...editingProduct, isNew: e.target.checked })}
                                     className="accent-brand-gold size-4"
                                 />
-                                <label htmlFor="isNew" className="text-sm font-bold text-brand-navy">Marcar como "Novo"</label>
+                                <label htmlFor="isNew" className="text-sm font-bold text-white uppercase tracking-widest text-xs">Marcar como "Novo"</label>
                             </div>
                             <div className="pt-6 flex gap-4">
-                                <button type="submit" className="flex-1 py-3 bg-brand-gold text-brand-navy font-black rounded-xl hover:bg-opacity-90 transition-all shadow-lg">
+                                <button type="submit" className="flex-1 py-3 bg-brand-gold text-brand-navy font-black rounded-xl hover:bg-opacity-90 transition-all shadow-lg shadow-brand-gold/20 uppercase tracking-widest">
                                     SALVAR PRODUTO
                                 </button>
-                                <button type="button" onClick={() => setShowForm(false)} className="px-6 py-3 border border-gray-200 text-gray-500 font-bold rounded-xl hover:bg-gray-50 transition-all">
+                                <button type="button" onClick={() => setShowForm(false)} className="px-6 py-3 border border-white/10 text-gray-500 font-bold rounded-xl hover:bg-white/5 transition-all uppercase tracking-widest text-xs">
                                     CANCELAR
                                 </button>
                             </div>
@@ -452,56 +452,56 @@ const Admin: React.FC = () => {
                 </div>
             )}
 
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div className="bg-brand-navy/30 rounded-2xl shadow-2xl border border-white/5 overflow-hidden backdrop-blur-md">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left">
-                        <thead className="bg-gray-50 border-b border-gray-100">
+                        <thead className="bg-black/20 border-b border-white/5">
                             <tr>
-                                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Produto</th>
-                                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Categoria</th>
-                                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Preço</th>
-                                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Estoque</th>
-                                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Status</th>
-                                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Gênero</th>
-                                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider text-right">Ações</th>
+                                <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Produto</th>
+                                <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Categoria</th>
+                                <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Preço</th>
+                                <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Estoque</th>
+                                <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
+                                <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Gênero</th>
+                                <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Ações</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-100">
+                        <tbody className="divide-y divide-white/5">
                             {products.map((p) => (
-                                <tr key={p.id} className="hover:bg-gray-50/50 transition-colors">
+                                <tr key={p.id} className="hover:bg-white/5 transition-colors">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-3">
-                                            <div className="size-12 rounded bg-gray-100 bg-cover bg-center border border-gray-200" style={{ backgroundImage: `url("${p.image}")` }}></div>
+                                            <div className="size-12 rounded bg-black/20 bg-cover bg-center border border-white/10" style={{ backgroundImage: `url("${p.image}")` }}></div>
                                             <div>
-                                                <div className="font-bold text-brand-navy">{p.name}</div>
-                                                <div className="text-xs text-gray-400">{p.brand} • REF: {p.ref}</div>
+                                                <div className="font-bold text-white">{p.name}</div>
+                                                <div className="text-xs text-gray-500">{p.brand} • REF: {p.ref}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <span className="px-2.5 py-1 bg-gray-100 text-gray-600 text-[10px] font-bold rounded uppercase">{p.category}</span>
+                                        <span className="px-2.5 py-1 bg-white/5 text-gray-400 text-[10px] font-bold rounded uppercase border border-white/5">{p.category}</span>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <div className="font-bold text-brand-navy">R$ {p.price.toFixed(2).replace('.', ',')}</div>
-                                        {p.oldPrice && <div className="text-xs text-gray-400 line-through">R$ {p.oldPrice.toFixed(2).replace('.', ',')}</div>}
+                                        <div className="font-bold text-white">R$ {p.price.toFixed(2).replace('.', ',')}</div>
+                                        {p.oldPrice && <div className="text-xs text-gray-600 line-through">R$ {p.oldPrice.toFixed(2).replace('.', ',')}</div>}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <div className={`font-bold ${p.stock && p.stock > 0 ? 'text-gray-600' : 'text-red-500'}`}>
+                                        <div className={`font-bold ${p.stock && p.stock > 0 ? 'text-gray-400' : 'text-red-500'}`}>
                                             {p.stock || 0} unid.
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
-                                        {p.isNew && <span className="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold rounded uppercase border border-blue-100">Novo</span>}
-                                        {p.oldPrice && <span className="ml-2 px-2 py-0.5 bg-red-50 text-red-600 text-[10px] font-bold rounded uppercase border border-red-100">Promo</span>}
+                                        {p.isNew && <span className="px-2 py-0.5 bg-blue-900/20 text-blue-400 text-[10px] font-bold rounded uppercase border border-blue-500/20">Novo</span>}
+                                        {p.oldPrice && <span className="ml-2 px-2 py-0.5 bg-red-900/20 text-red-500 text-[10px] font-bold rounded uppercase border border-red-500/20">Promo</span>}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <span className="px-2.5 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold rounded uppercase">{p.gender}</span>
+                                        <span className="px-2.5 py-1 bg-white/5 text-gray-500 text-[10px] font-bold rounded uppercase border border-white/5">{p.gender}</span>
                                     </td>
                                     <td className="px-6 py-4 text-right">
                                         <div className="flex justify-end gap-2">
                                             {deletingId === p.id ? (
-                                                <div className="flex items-center gap-2 bg-red-50 px-2 py-1 rounded-lg border border-red-100 animate-in fade-in slide-in-from-right-2">
-                                                    <span className="text-[10px] font-bold text-red-600 uppercase">Excluir?</span>
+                                                <div className="flex items-center gap-2 bg-red-900/20 px-2 py-1 rounded-lg border border-red-500/20 animate-in fade-in slide-in-from-right-2">
+                                                    <span className="text-[10px] font-bold text-red-500 uppercase">Excluir?</span>
                                                     <button
                                                         onClick={() => { handleDeleteProduct(p.id); setDeletingId(null); }}
                                                         className="px-2 py-1 bg-red-500 text-white text-[10px] font-black rounded hover:bg-red-600 transition-colors"
@@ -510,7 +510,7 @@ const Admin: React.FC = () => {
                                                     </button>
                                                     <button
                                                         onClick={() => setDeletingId(null)}
-                                                        className="px-2 py-1 bg-gray-200 text-gray-600 text-[10px] font-bold rounded hover:bg-gray-300 transition-colors"
+                                                        className="px-2 py-1 bg-white/10 text-gray-400 text-[10px] font-bold rounded hover:bg-white/20 transition-colors"
                                                     >
                                                         NÃO
                                                     </button>
@@ -519,13 +519,13 @@ const Admin: React.FC = () => {
                                                 <>
                                                     <button
                                                         onClick={() => { setEditingProduct(p); setShowForm(true); }}
-                                                        className="p-2 text-gray-400 hover:text-brand-gold transition-colors"
+                                                        className="p-2 text-gray-600 hover:text-brand-gold transition-colors"
                                                     >
                                                         <span className="material-symbols-outlined">edit</span>
                                                     </button>
                                                     <button
                                                         onClick={() => setDeletingId(p.id)}
-                                                        className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+                                                        className="p-2 text-gray-600 hover:text-red-500 transition-colors"
                                                     >
                                                         <span className="material-symbols-outlined">delete_outline</span>
                                                     </button>

@@ -21,10 +21,10 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-brand-navy border-b-2 border-brand-gold shadow-lg">
+    <header className="sticky top-0 z-50 w-full bg-brand-navy border-b-2 border-brand-gold shadow-lg" style={{ backgroundColor: '#0d131b' }}>
       <div className="max-w-[1280px] mx-auto px-4 sm:px-10 h-40 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 text-white">
-          <img src="/public/urban_tide_logo.png" alt="Urban Tide Logo" className="h-36 w-auto object-contain" />
+          <img src="/urban_tide_logo.png" alt="Urban Tide Logo" className="h-36 w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav */}

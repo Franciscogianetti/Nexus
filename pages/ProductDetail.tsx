@@ -66,8 +66,8 @@ const ProductDetail: React.FC = () => {
 
     if (!product) return (
         <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-            <span className="material-symbols-outlined text-6xl text-gray-200 mb-4">error</span>
-            <h2 className="text-2xl font-black text-brand-navy mb-2">Produto não encontrado</h2>
+            <span className="material-symbols-outlined text-6xl text-gray-700 mb-4">error</span>
+            <h2 className="text-2xl font-black text-white mb-2">Produto não encontrado</h2>
             <p className="text-gray-500 mb-8">O produto que você procura não existe ou foi removido.</p>
             <Link to="/catalog" className="px-8 py-3 bg-brand-navy text-white font-black rounded-xl hover:bg-opacity-90 transition-all">
                 VOLTAR PARA O CATÁLOGO
@@ -106,7 +106,7 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                 <span className="material-symbols-outlined text-xs">chevron_right</span>
                 <Link to="/catalog" className="hover:text-brand-gold transition-colors">Catálogo</Link>
                 <span className="material-symbols-outlined text-xs">chevron_right</span>
-                <span className="text-brand-navy">{product.name}</span>
+                <span className="text-white">{product.name}</span>
             </nav>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -118,7 +118,7 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                             <button
                                 key={idx}
                                 onClick={() => setMainImage(img)}
-                                className={`size-20 md:size-24 rounded-xl overflow-hidden border-2 transition-all flex-shrink-0 ${mainImage === img ? 'border-brand-gold shadow-lg scale-95' : 'border-transparent hover:border-gray-200'}`}
+                                className={`size-20 md:size-24 rounded-xl overflow-hidden border-2 transition-all flex-shrink-0 ${mainImage === img ? 'border-brand-gold shadow-lg scale-95' : 'border-transparent hover:border-white/20'}`}
                             >
                                 <img src={img} alt={`Thumbnail ${idx}`} className="w-full h-full object-cover" />
                             </button>
@@ -127,7 +127,7 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
 
                     {/* Main Image with Zoom */}
                     <div
-                        className="relative flex-1 aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 cursor-crosshair group shadow-2xl"
+                        className="relative flex-1 aspect-[3/4] rounded-2xl overflow-hidden bg-brand-navy/50 cursor-crosshair group shadow-2xl border border-white/5"
                         onMouseMove={handleMouseMove}
                         onMouseLeave={() => setZoomPos(prev => ({ ...prev, show: false }))}
                     >
@@ -166,27 +166,27 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                         </div>
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl font-black text-brand-navy mb-6 leading-none uppercase italic tracking-tighter">{product.name}</h1>
+                    <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-none uppercase italic tracking-tighter">{product.name}</h1>
 
                     <div className="flex flex-wrap items-center gap-4 mb-10">
-                        <span className="text-[10px] font-black text-gray-400 bg-white border border-gray-100 px-4 py-2 rounded-lg tracking-widest uppercase">REF: {product.ref}</span>
-                        <span className="text-[10px] font-black text-brand-navy bg-brand-gold/10 border border-brand-gold/20 px-4 py-2 rounded-lg tracking-widest uppercase">{product.category}</span>
+                        <span className="text-[10px] font-black text-gray-400 bg-white/5 border border-white/10 px-4 py-2 rounded-lg tracking-widest uppercase">REF: {product.ref}</span>
+                        <span className="text-[10px] font-black text-brand-navy bg-brand-gold border border-brand-gold/20 px-4 py-2 rounded-lg tracking-widest uppercase">{product.category}</span>
                     </div>
 
-                    <div className="mb-12 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm relative overflow-hidden">
+                    <div className="mb-12 bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-md shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-4 opacity-5">
-                            <span className="material-symbols-outlined text-8xl">payments</span>
+                            <span className="material-symbols-outlined text-8xl text-white">payments</span>
                         </div>
 
                         {product.oldPrice || isApplied ? (
-                            <span className="text-xl text-gray-400 line-through block mb-2 font-medium opacity-50">
+                            <span className="text-xl text-gray-500 line-through block mb-2 font-medium opacity-50">
                                 R$ {(product.oldPrice || product.price).toFixed(2).replace('.', ',')}
                             </span>
                         ) : null}
 
                         <div className="flex items-baseline gap-2">
-                            <span className="text-6xl md:text-7xl font-black text-brand-navy italic tracking-tighter">R$ {discountedPrice.toFixed(2).split('.')[0]}</span>
-                            <span className="text-3xl font-black text-brand-navy italic tracking-tighter">,{discountedPrice.toFixed(2).split('.')[1]}</span>
+                            <span className="text-6xl md:text-7xl font-black text-white italic tracking-tighter">R$ {discountedPrice.toFixed(2).split('.')[0]}</span>
+                            <span className="text-3xl font-black text-white italic tracking-tighter">,{discountedPrice.toFixed(2).split('.')[1]}</span>
 
                             {isApplied && (
                                 <span className="ml-4 bg-brand-gold text-brand-navy text-xs font-black px-3 py-1 rounded-full uppercase tracking-tighter animate-bounce">
@@ -200,8 +200,8 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                     {/* Stock Status */}
                     <div className="mb-12">
                         <div className="flex items-center gap-3 mb-6">
-                            <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Disponibilidade em Loja</h3>
-                            <div className="h-px flex-grow bg-gray-100"></div>
+                            <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">Disponibilidade em Loja</h3>
+                            <div className="h-px flex-grow bg-white/5"></div>
                         </div>
                         <div className={`inline-flex items-center gap-3 px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest ${product.stock && product.stock > 0 ? 'bg-green-50 text-green-600 border border-green-100' : 'bg-red-50 text-red-600 border border-red-100'}`}>
                             <span className="material-symbols-outlined text-xl">
@@ -220,7 +220,7 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                                 placeholder="CUPOM"
                                 value={coupon}
                                 onChange={(e) => setCoupon(e.target.value)}
-                                className="flex-grow px-4 py-2 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-brand-gold font-bold uppercase"
+                                className="flex-grow px-4 py-2 rounded-xl border border-white/10 bg-black/20 text-white outline-none focus:ring-2 focus:ring-brand-gold font-bold uppercase"
                             />
                             <button
                                 onClick={handleApplyCoupon}
@@ -259,7 +259,7 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                                         onClick={() => isAvailable && setSelectedSize(s.size)}
                                         className={`group relative ${!isAvailable ? 'opacity-30 pointer-events-none grayscale' : 'cursor-pointer'}`}
                                     >
-                                        <div className={`size-14 md:size-16 rounded-2xl border-2 font-black flex items-center justify-center transition-all text-lg italic ${isSelected ? 'border-brand-gold bg-brand-gold/10 text-brand-gold shadow-lg scale-110' : 'border-gray-100 text-brand-navy hover:border-brand-gold/50'}`}>
+                                        <div className={`size-14 md:size-16 rounded-2xl border-2 font-black flex items-center justify-center transition-all text-lg italic ${isSelected ? 'border-brand-gold bg-brand-gold/10 text-brand-gold shadow-lg shadow-brand-gold/20 scale-110' : 'border-white/10 text-white hover:border-brand-gold'}`}>
                                             {s.size}
                                         </div>
                                         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-brand-navy text-white text-[8px] rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-30 font-bold uppercase tracking-widest shadow-xl">
@@ -282,20 +282,20 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                             <span className="material-symbols-outlined text-3xl text-brand-gold group-hover:text-brand-navy transition-colors">chat</span>
                             COMPRAR PELO WHATSAPP
                         </a>
-                        <button className="size-20 flex-shrink-0 rounded-2xl border-2 border-gray-100 hover:border-brand-gold hover:bg-gray-50 transition-all group flex items-center justify-center">
-                            <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-brand-gold transition-colors">share</span>
+                        <button className="size-20 flex-shrink-0 rounded-2xl border-2 border-white/10 hover:border-brand-gold hover:bg-white/5 transition-all group flex items-center justify-center">
+                            <span className="material-symbols-outlined text-3xl text-gray-600 group-hover:text-brand-gold transition-colors">share</span>
                         </button>
                     </div>
 
                     {/* Trust Badges */}
-                    <div className="grid grid-cols-2 gap-8 pt-12 border-t border-gray-100">
+                    <div className="grid grid-cols-2 gap-8 pt-12 border-t border-white/5">
                         <div className="flex flex-col items-center sm:items-start gap-3">
                             <div className="size-12 rounded-2xl bg-brand-navy text-brand-gold flex items-center justify-center shadow-lg">
                                 <span className="material-symbols-outlined text-2xl">verified</span>
                             </div>
                             <div className="text-center sm:text-left">
-                                <h4 className="font-black text-brand-navy text-sm uppercase tracking-tighter">100% Original</h4>
-                                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Produto com garantia</p>
+                                <h4 className="font-black text-white text-sm uppercase tracking-tighter">100% Original</h4>
+                                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Produto com garantia</p>
                             </div>
                         </div>
                         <div className="flex flex-col items-center sm:items-start gap-3">
@@ -303,8 +303,8 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                                 <span className="material-symbols-outlined text-2xl">local_shipping</span>
                             </div>
                             <div className="text-center sm:text-left">
-                                <h4 className="font-black text-brand-navy text-sm uppercase tracking-tighter">Envio Imediato</h4>
-                                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Despachamos em 24h</p>
+                                <h4 className="font-black text-white text-sm uppercase tracking-tighter">Envio Imediato</h4>
+                                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Despachamos em 24h</p>
                             </div>
                         </div>
                     </div>

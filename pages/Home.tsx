@@ -54,7 +54,7 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col gap-0">
       {/* Hero Slider */}
-      <section className="relative w-full h-[600px] bg-brand-navy overflow-hidden group">
+      <section className="relative w-full h-[600px] bg-brand-navy overflow-hidden group" style={{ backgroundColor: '#0d131b' }}>
         {/* Slides */}
         {slides.map((slide, index) => (
           <div
@@ -157,34 +157,34 @@ const Home: React.FC = () => {
       </section>
 
       {/* Trust Indicators */}
-      <section className="bg-white border-b border-gray-200">
+      <section className="bg-brand-navy/50 border-y border-white/5 backdrop-blur-sm">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-10 py-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
-              <div className="size-12 rounded-full bg-blue-50 text-primary flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors group">
+              <div className="size-12 rounded-full bg-brand-navy border border-white/10 text-brand-gold flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-black/20">
                 <span className="material-symbols-outlined text-2xl">local_shipping</span>
               </div>
               <div>
-                <h3 className="text-brand-navy font-bold text-lg mb-1">Envio para todo o Brasil</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">Entrega rápida, segura e com código de rastreio.</p>
+                <h3 className="text-white font-bold text-lg mb-1">Envio para todo o Brasil</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Entrega rápida, segura e com código de rastreio.</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
-              <div className="size-12 rounded-full bg-green-50 text-brand-green flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors group">
+              <div className="size-12 rounded-full bg-brand-navy border border-white/10 text-brand-green flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-black/20">
                 <span className="material-symbols-outlined text-2xl">chat</span>
               </div>
               <div>
-                <h3 className="text-brand-navy font-bold text-lg mb-1">Pedido via WhatsApp</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">Atendimento humano e personalizado para tirar suas dúvidas.</p>
+                <h3 className="text-white font-bold text-lg mb-1">Pedido via WhatsApp</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Atendimento humano e personalizado para tirar suas dúvidas.</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
-              <div className="size-12 rounded-full bg-yellow-50 text-yellow-700 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors group">
+              <div className="size-12 rounded-full bg-brand-navy border border-white/10 text-brand-gold flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-black/20">
                 <span className="material-symbols-outlined text-2xl">workspace_premium</span>
               </div>
               <div>
-                <h3 className="text-brand-navy font-bold text-lg mb-1">Qualidade Garantida</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">Tecido Fio 40.1 Penteado. Não encolhe e não desbota.</p>
+                <h3 className="text-white font-bold text-lg mb-1">Qualidade Garantida</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Tecido Fio 40.1 Penteado. Não encolhe e não desbota.</p>
               </div>
             </div>
           </div>
@@ -193,12 +193,12 @@ const Home: React.FC = () => {
 
       {/* Highlights */}
       <section className="max-w-[1280px] mx-auto px-4 sm:px-10 py-16 w-full">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-gray-200 pb-4">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-white/10 pb-4">
           <div>
-            <span className="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Novidades</span>
-            <h2 className="text-brand-navy text-3xl font-bold tracking-tight">Lançamentos da Semana</h2>
+            <span className="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2 block">Novidades</span>
+            <h2 className="text-white text-3xl font-bold tracking-tight">Lançamentos da Semana</h2>
           </div>
-          <Link to="/catalog" className="text-primary font-bold hover:underline flex items-center">
+          <Link to="/catalog" className="text-brand-gold font-bold hover:underline flex items-center">
             Ver todos <span className="material-symbols-outlined text-sm ml-1">arrow_forward_ios</span>
           </Link>
         </div>
@@ -208,10 +208,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* Featured Banner Section */}
-      <section className="bg-gray-50 py-16 border-y border-gray-100">
+      <section className="bg-brand-navy/30 py-16 border-y border-white/5 backdrop-blur-sm">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-10">
           <div className="flex justify-center mb-10">
-            <div className="bg-white p-1 rounded-xl shadow-inner border border-gray-200 flex gap-1">
+            <div className="bg-black/40 p-1 rounded-xl shadow-inner border border-white/5 flex gap-1">
               <button
                 onClick={() => setActiveLine('masculino')}
                 className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${activeLine === 'masculino' ? 'bg-brand-navy text-white shadow-lg' : 'text-gray-500 hover:text-brand-navy hover:bg-gray-50'}`}
@@ -220,7 +220,7 @@ const Home: React.FC = () => {
               </button>
               <button
                 onClick={() => setActiveLine('feminino')}
-                className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${activeLine === 'feminino' ? 'bg-brand-navy text-white shadow-lg' : 'text-gray-500 hover:text-brand-navy hover:bg-gray-50'}`}
+                className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${activeLine === 'feminino' ? 'bg-brand-gold text-brand-navy shadow-lg shadow-brand-gold/20' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
               >
                 FEMININO <span className="text-[10px] ml-1 opacity-60">EXCLUSIVE</span>
               </button>
@@ -261,11 +261,11 @@ const Home: React.FC = () => {
             </div>
 
             <div className="flex flex-col justify-center gap-6">
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-gold/30 transition-colors group">
+              <div className="bg-black/20 p-8 rounded-2xl shadow-xl border border-white/5 hover:border-brand-gold/30 transition-colors group">
                 <span className="material-symbols-outlined text-brand-gold text-4xl mb-4 group-hover:scale-110 transition-transform block w-fit">straighten</span>
-                <h3 className="text-2xl font-bold text-brand-navy mb-3">Guia de Medidas</h3>
-                <p className="text-gray-500 mb-6 font-light">Confira nossa tabela detalhada para encontrar o caimento perfeito em todas as nossas linhas.</p>
-                <Link to="/size-guide" className="inline-flex items-center text-primary font-bold hover:gap-2 transition-all group-hover:text-blue-700">
+                <h3 className="text-2xl font-bold text-white mb-3">Guia de Medidas</h3>
+                <p className="text-gray-400 mb-6 font-light">Confira nossa tabela detalhada para encontrar o caimento perfeito em todas as nossas linhas.</p>
+                <Link to="/size-guide" className="inline-flex items-center text-brand-gold font-bold hover:text-white transition-all">
                   Acessar Tabela de Tamanhos <span className="material-symbols-outlined ml-1">arrow_forward</span>
                 </Link>
               </div>

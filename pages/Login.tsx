@@ -47,12 +47,12 @@ const Login: React.FC = () => {
 
     return (
         <div className="flex items-center justify-center min-h-[70vh] px-4">
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+            <div className="w-full max-w-md bg-brand-navy/30 rounded-2xl shadow-2xl p-8 border border-white/5 backdrop-blur-md">
                 <div className="text-center mb-10">
-                    <h1 className="text-3xl font-black text-brand-navy mb-2">
+                    <h1 className="text-3xl font-black text-white mb-2 uppercase italic tracking-tight">
                         {isSignUp ? 'Criar Conta' : 'Acesso Restrito'}
                     </h1>
-                    <p className="text-gray-500">
+                    <p className="text-gray-500 text-sm">
                         {isSignUp ? 'Cadastre-se para aproveitar a Urban Tide' : 'Faça login para gerenciar a Urban Tide'}
                     </p>
                 </div>
@@ -66,10 +66,10 @@ const Login: React.FC = () => {
 
                 <form onSubmit={handleAuth} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-bold text-brand-navy mb-2">E-mail</label>
+                        <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">E-mail</label>
                         <input
                             type="email"
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-white/10 bg-black/20 text-white focus:ring-2 focus:ring-brand-gold outline-none transition-all placeholder:text-gray-700"
                             placeholder="seu@email.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -77,11 +77,11 @@ const Login: React.FC = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-bold text-brand-navy mb-2">Senha</label>
+                        <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Senha</label>
                         <div className="relative">
                             <input
                                 type={showPassword ? 'text' : 'password'}
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all pr-12"
+                                className="w-full px-4 py-3 rounded-xl border border-white/10 bg-black/20 text-white focus:ring-2 focus:ring-brand-gold outline-none transition-all pr-12 placeholder:text-gray-700"
                                 placeholder="••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -90,7 +90,7 @@ const Login: React.FC = () => {
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-navy transition-colors focus:outline-none"
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600 hover:text-brand-gold transition-colors focus:outline-none"
                             >
                                 <span className="material-symbols-outlined">
                                     {showPassword ? 'visibility_off' : 'visibility'}
@@ -101,20 +101,20 @@ const Login: React.FC = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full h-14 bg-brand-navy text-white font-black rounded-xl hover:bg-opacity-90 transition-all shadow-lg flex items-center justify-center disabled:opacity-50"
+                        className="w-full h-14 bg-brand-gold text-brand-navy font-black rounded-xl hover:bg-opacity-90 transition-all shadow-xl shadow-brand-gold/10 flex items-center justify-center disabled:opacity-50 uppercase tracking-widest"
                     >
                         {loading ? 'Carregando...' : (isSignUp ? 'Cadastrar' : 'Entrar')}
                     </button>
                 </form>
 
-                <div className="mt-8 pt-8 border-t border-gray-100 flex flex-col gap-4">
+                <div className="mt-8 pt-8 border-t border-white/5 flex flex-col gap-4">
                     <button
                         onClick={() => { setIsSignUp(!isSignUp); setMsg(null); }}
-                        className="text-sm font-bold text-brand-navy hover:text-brand-gold transition-colors text-center"
+                        className="text-sm font-bold text-brand-gold hover:text-white transition-colors text-center uppercase tracking-widest"
                     >
                         {isSignUp ? 'Já tem conta? Faça login' : 'Ainda não tem conta? Cadastre-se'}
                     </button>
-                    <a href="/" className="text-center text-sm text-gray-500 hover:text-brand-navy">
+                    <a href="/" className="text-center text-sm text-gray-600 hover:text-white transition-colors">
                         ← Voltar para a Home
                     </a>
                 </div>
