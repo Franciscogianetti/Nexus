@@ -212,19 +212,20 @@ ${isApplied ? `🎟️ *CUPOM APLICADO: URBAN20 (20% OFF)*\n🔐 Protocolo de Se
                     </div>
 
                     {/* Coupon Section */}
-                    <div className="mb-12 bg-gray-50 p-6 rounded-2xl border border-gray-200">
-                        <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Cupom de Desconto</h3>
+                    <div className="mb-12 bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-sm shadow-xl">
+                        <h3 className="text-[10px] font-black text-brand-gold uppercase tracking-[0.2em] mb-4">Cupom de Desconto</h3>
                         <div className="flex gap-2">
                             <input
                                 type="text"
                                 placeholder="CUPOM"
                                 value={coupon}
                                 onChange={(e) => setCoupon(e.target.value)}
-                                className="flex-grow px-4 py-2 rounded-xl border border-white/10 bg-black/20 text-white outline-none focus:ring-2 focus:ring-brand-gold font-bold uppercase"
+                                className="flex-grow px-4 py-2 rounded-xl border border-white/10 bg-black/40 text-white outline-none focus:ring-2 focus:ring-brand-gold font-bold uppercase placeholder:text-gray-600"
                             />
                             <button
                                 onClick={handleApplyCoupon}
-                                className="px-6 py-2 bg-brand-navy text-white font-bold rounded-xl hover:bg-opacity-90 transition-all"
+                                className="px-6 py-2 bg-brand-gold text-brand-navy font-black rounded-xl hover:bg-white hover:scale-105 transition-all shadow-lg"
+                                style={{ backgroundColor: '#c5a059', color: '#0d131b' }}
                             >
                                 APLICAR
                             </button>
