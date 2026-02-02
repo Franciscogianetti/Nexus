@@ -56,7 +56,7 @@ ${isApplied ? '🎟️ CUPOM APLICADO: URBAN20 (20% OFF)\n🔐 Protocolo de Segu
             />
             <button
               onClick={handleApplyCoupon}
-              className="px-8 py-3 bg-brand-gold text-brand-navy font-black rounded-xl hover:bg-white transition-all shadow-lg"
+              className="btn-aplicar px-8 py-3 bg-brand-gold text-brand-navy font-black rounded-xl hover:bg-white transition-all shadow-lg"
               style={{ backgroundColor: '#c5a059', color: '#0d131b' }}
             >
               APLICAR
