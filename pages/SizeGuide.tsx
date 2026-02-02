@@ -4,7 +4,7 @@ import { SIZES, WHATSAPP_NUMBER } from '../constants';
 
 const SizeGuide: React.FC = () => {
   return (
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-10 py-12 flex flex-col gap-10">
+    <div className="max-w-[1400px] mx-auto px-4 sm:px-8 py-12 flex flex-col gap-10">
       {/* Header */}
       <div className="flex flex-col gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
         <div className="flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider">
@@ -26,25 +26,25 @@ const SizeGuide: React.FC = () => {
           </div>
 
           <div className="overflow-hidden rounded-xl border border-white/5 shadow-2xl bg-brand-navy/30 backdrop-blur-md">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[600px] text-left text-sm">
+            <div className="">
+              <table className="w-full text-left text-[10px] sm:text-sm">
                 <thead className="bg-white/5 text-gray-400 font-medium uppercase tracking-wider">
                   <tr>
-                    <th className="px-6 py-5">Tamanho</th>
-                    <th className="px-6 py-5 text-center">Largura (Torax)</th>
-                    <th className="px-6 py-5 text-center">Altura (Comprimento)</th>
-                    <th className="px-6 py-5 text-center">Peso Sugerido</th>
-                    <th className="px-6 py-5 text-center">Altura Sugerida</th>
+                    <th className="px-2 sm:px-6 py-4 sm:py-5">Tamanho</th>
+                    <th className="px-2 sm:px-6 py-4 sm:py-5 text-center">Largura</th>
+                    <th className="px-2 sm:px-6 py-4 sm:py-5 text-center">Altura</th>
+                    <th className="px-2 sm:px-6 py-4 sm:py-5 text-center">Peso</th>
+                    <th className="px-2 sm:px-6 py-4 sm:py-5 text-center">Sugestão</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   {SIZES.map(s => (
                     <tr key={s.size} className="hover:bg-white/5 transition-colors group cursor-default">
-                      <td className="px-6 py-4 font-bold text-lg text-white group-hover:text-brand-gold">{s.size}</td>
-                      <td className="px-6 py-4 text-center font-medium text-gray-300">{s.width}</td>
-                      <td className="px-6 py-4 text-center font-medium text-gray-300">{s.height}</td>
-                      <td className="px-6 py-4 text-center text-gray-500">{s.weight}</td>
-                      <td className="px-6 py-4 text-center text-gray-500">{s.suggestedHeight}</td>
+                      <td className="px-2 sm:px-6 py-3 sm:py-4 font-bold text-base sm:text-lg text-white group-hover:text-brand-gold">{s.size}</td>
+                      <td className="px-2 sm:px-6 py-3 sm:py-4 text-center font-medium text-gray-300">{s.width}</td>
+                      <td className="px-2 sm:px-6 py-3 sm:py-4 text-center font-medium text-gray-300">{s.height}</td>
+                      <td className="px-2 sm:px-6 py-3 sm:py-4 text-center text-gray-500 whitespace-nowrap">{s.weight}</td>
+                      <td className="px-2 sm:px-6 py-3 sm:py-4 text-center text-gray-500 whitespace-nowrap">{s.suggestedHeight}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -15,7 +15,7 @@ app.use(express.static(distPath));
 
 // Health check
 app.get('/health', (req, res) => {
-    res.send('Server is up and running. Version: REVERT_COLORS_V8_CLEAN');
+    res.send('Server is up and running. Version: REVERT_COLORS_V9_SIZE_CHART');
 });
 
 // Fallback to index.html for SPA routing
